@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/funcionarios")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class FuncionarioController {
 
