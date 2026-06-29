@@ -1,6 +1,6 @@
 # Tech Store API
 
-API REST desenvolvida com **Java 17 + Spring Boot 3.2** para gestão de uma loja de tecnologia.
+API REST desenvolvida com **Java 17 + Spring Boot 3.2** para gestão.
 
 ---
 
@@ -207,12 +207,3 @@ A API calcula o total automaticamente e desconta o estoque de cada produto.
 | 500 | Erro interno |
 
 ---
-
-## Observações sobre o SQL original
-
-Foram corrigidos 3 erros de sintaxe no script original:
-1. `funcionario` — faltava vírgula após `estado VARCHAR(2)`
-2. `funcionario` — `FOREIGN KEY` tinha `;` indevido dentro da constraint
-3. `fornecedor` — faltava vírgula após `estado VARCHAR(2)`
-
-O arquivo corrigido está em `banco_de_dados_corrigido.sql`.
