@@ -1,5 +1,6 @@
 package com.techstore.api.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
@@ -31,6 +32,9 @@ public class Funcionario {
 
     @Column(nullable = false, length = 75)
     private String cargo;
+
+    @Column
+    private BigDecimal salario;
 
     @Column(name = "nivel_acesso", nullable = false, length = 50)
     private String nivelAcesso;

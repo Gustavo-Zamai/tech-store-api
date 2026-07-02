@@ -20,7 +20,7 @@ public class Categoria {
     @Column(nullable = false, length = 220)
     private String descricao;
 
-    @Column(name = "data_cadastro", nullable = false)
+    @Column(name = "data_cadastro", nullable = true, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dataCadastro;
 
     @Column(nullable = false)

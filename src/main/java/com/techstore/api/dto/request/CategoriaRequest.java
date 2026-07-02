@@ -12,9 +12,8 @@ public class CategoriaRequest {
     @Size(max = 220)
     private String descricao;
 
-    @NotBlank(message = "Informe a data de cadastro")
     private LocalDateTime dataCadastro;
 
-    @NotBlank(message = "Informe se a categoria está ativa")
+    @NotNull(message = "Informe se a categoria está ativa")
     private boolean ativo;
 }

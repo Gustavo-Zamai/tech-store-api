@@ -13,4 +13,7 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Intege
     boolean existsByCpf(String cpf);
     boolean existsByEmail(String email);
     List<Funcionario> findByEmpresaId(Integer idEmpresa);
+    
+    // Listar funcionários por empresa
+    List<Funcionario> findByEmpresaId(Long empresaId);
 }

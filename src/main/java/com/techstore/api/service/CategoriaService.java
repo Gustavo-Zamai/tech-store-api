@@ -26,8 +26,8 @@ public class CategoriaService {
         }
         Categoria c = Categoria.builder()
             .descricao(request.getDescricao())
-            .dataCadastro(request.getDataCadastro())
             .ativo(request.isAtivo())
+            .dataCadastro(request.getDataCadastro() != null ? request.getDataCadastro() : java.time.LocalDateTime.now())
             .build();
         return toResponse(repository.save(c));
     }
@@ -46,7 +46,6 @@ public class CategoriaService {
     public CategoriaResponse atualizar(Integer id, CategoriaRequest request) {
         Categoria c = buscarEntidade(id);
         c.setDescricao(request.getDescricao());
-        c.setDataCadastro(request.getDataCadastro());
         c.setAtivo(request.isAtivo());
         return toResponse(repository.save(c));
     }
