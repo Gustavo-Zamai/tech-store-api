@@ -41,9 +41,8 @@ public class ClienteRequest {
     @Size(max = 2)
     private String estado;
 
-    @NotNull(message = "Informe a data de cadastro do cliente")
     private LocalDateTime dataCadastro;
 
-    @NotNull(message = "Informe se o cliente está ativo")
+    @NotBlank(message = "Informe se o cliente está ativo")
     private boolean ativo;
 }

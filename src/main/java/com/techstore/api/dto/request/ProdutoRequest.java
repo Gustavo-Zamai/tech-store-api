@@ -36,9 +36,8 @@ public class ProdutoRequest {
     @Min(value = 0, message = "Quantidade não pode ser negativa")
     private Integer quantidadeMinima;
 
-    @NotNull(message = "Data de cadastro é obrigatória")
     private LocalDateTime dataCadastro;
 
-    @NotNull(message = "Informe se é um produto ativo no seu estoque")
+    @NotBlank
     private boolean ativo;
 }

@@ -46,7 +46,7 @@ public class Fornecedor {
     @Column(length = 2)
     private String estado;
 
-    @Column(name = "data_cadastro", nullable = false)
+    @Column(name = "data_cadastro", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dataCadastro;
 
     @Column(nullable = false)

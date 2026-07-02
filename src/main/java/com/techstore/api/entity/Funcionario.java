@@ -59,7 +59,7 @@ public class Funcionario {
     @Column(length = 2)
     private String estado;
 
-    @Column(name = "data_contratacao", nullable = false)
+    @Column(name = "data_contratacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dataContratacao;
 
     @Column(nullable = false)
