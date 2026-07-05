@@ -38,6 +38,6 @@ public class ProdutoRequest {
 
     private LocalDateTime dataCadastro;
 
-    @NotBlank
+    @NotNull
     private boolean ativo;
 }

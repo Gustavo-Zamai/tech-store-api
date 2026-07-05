@@ -51,6 +51,7 @@ public class VendaService {
             ItemVenda item = ItemVenda.builder()
                     .produto(produto)
                     .quantidade(itemReq.getQuantidade())
+                    .precoUnitario(produto.getPrecoVenda())
                     .total(subtotal)
                     .build();
             itens.add(item);
@@ -61,7 +62,10 @@ public class VendaService {
                 .funcionario(funcionario)
                 .dataVenda(LocalDateTime.now())
                 .metodoPagamento(request.getMetodoPagamento())
+                .subtotal(total) // ainda não há lógica de desconto implementada, então subtotal = total
+                .desconto(BigDecimal.ZERO)
                 .total(total)
+                .status("CONCLUIDA")
                 .build();
 
         venda = repository.save(venda);

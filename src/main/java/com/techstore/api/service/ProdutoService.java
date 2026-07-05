@@ -35,6 +35,7 @@ public class ProdutoService {
                 .fornecedor(fornecedor)
                 .categoria(categoria)
                 .dataCadastro(request.getDataCadastro())
+                .quantidadeMinima(request.getQuantidadeMinima())
                 .ativo(request.isAtivo())
                 .build();
         return toResponse(repository.save(p));
@@ -73,6 +74,7 @@ public class ProdutoService {
         p.setFornecedor(fornecedor);
         p.setCategoria(categoria);
         p.setDataCadastro(request.getDataCadastro());
+        p.setQuantidadeMinima(request.getQuantidadeMinima());
         p.setAtivo(request.isAtivo());
         return toResponse(repository.save(p));
     }
@@ -100,6 +102,9 @@ public class ProdutoService {
         res.setNomeFornecedor(p.getFornecedor().getNomeCompleto());
         res.setIdCategoria(p.getCategoria().getId());
         res.setDescricaoCategoria(p.getCategoria().getDescricao());
+        res.setQuantidadeMinima(p.getQuantidadeMinima());
+        res.setDataCadastro(p.getDataCadastro());
+        res.setAtivo(p.isAtivo());
         return res;
     }
 }
