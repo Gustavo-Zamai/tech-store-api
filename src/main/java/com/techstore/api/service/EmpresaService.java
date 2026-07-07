@@ -81,6 +81,23 @@ public class EmpresaService {
                 .estado(r.getEstado())
                 .logoUrl(r.getLogoUrl())
                 .ativo(r.getAtivo() != null ? r.getAtivo() : true)
+                .nomeFantasia(r.getNomeFantasia())
+                .inscricaoEstadual(r.getInscricaoEstadual())
+                .inscricaoMunicipal(r.getInscricaoMunicipal())
+                .regimeTributario(r.getRegimeTributario())
+                .cnaeFiscal(r.getCnaeFiscal())
+                .codigoMunicipioIbge(r.getCodigoMunicipioIbge())
+                .codigoUfIbge(r.getCodigoUfIbge())
+                .ambienteNfe(r.getAmbienteNfe())
+                .serieNfe(r.getSerieNfe())
+                .proximoNumeroNfe(r.getProximoNumeroNfe())
+                .serieNfce(r.getSerieNfce())
+                .proximoNumeroNfce(r.getProximoNumeroNfce())
+                .certificadoCaminho(r.getCertificadoCaminho())
+                .certificadoSenha(r.getCertificadoSenha())
+                .certificadoValidade(r.getCertificadoValidade())
+                .cscId(r.getCscId())
+                .cscToken(r.getCscToken())
                 .build();
     }
 
@@ -97,6 +114,27 @@ public class EmpresaService {
         e.setEstado(r.getEstado());
         e.setLogoUrl(r.getLogoUrl());
         if (r.getAtivo() != null) e.setAtivo(r.getAtivo());
+        e.setNomeFantasia(r.getNomeFantasia());
+        e.setInscricaoEstadual(r.getInscricaoEstadual());
+        e.setInscricaoMunicipal(r.getInscricaoMunicipal());
+        e.setRegimeTributario(r.getRegimeTributario());
+        e.setCnaeFiscal(r.getCnaeFiscal());
+        e.setCodigoMunicipioIbge(r.getCodigoMunicipioIbge());
+        e.setCodigoUfIbge(r.getCodigoUfIbge());
+        e.setAmbienteNfe(r.getAmbienteNfe());
+        e.setSerieNfe(r.getSerieNfe());
+        e.setProximoNumeroNfe(r.getProximoNumeroNfe());
+        e.setSerieNfce(r.getSerieNfce());
+        e.setProximoNumeroNfce(r.getProximoNumeroNfce());
+        // Senha do certificado só é atualizada se vier preenchida - evita
+        // apagar a senha já salva quando o formulário reenvia em branco.
+        if (r.getCertificadoSenha() != null && !r.getCertificadoSenha().isBlank()) {
+            e.setCertificadoSenha(r.getCertificadoSenha());
+        }
+        e.setCertificadoCaminho(r.getCertificadoCaminho());
+        e.setCertificadoValidade(r.getCertificadoValidade());
+        e.setCscId(r.getCscId());
+        e.setCscToken(r.getCscToken());
     }
 
     private EmpresaResponse toResponse(Empresa e) {
@@ -115,6 +153,22 @@ public class EmpresaService {
         res.setLogoUrl(e.getLogoUrl());
         res.setDataCadastro(e.getDataCadastro());
         res.setAtivo(e.getAtivo());
+        res.setNomeFantasia(e.getNomeFantasia());
+        res.setInscricaoEstadual(e.getInscricaoEstadual());
+        res.setInscricaoMunicipal(e.getInscricaoMunicipal());
+        res.setRegimeTributario(e.getRegimeTributario());
+        res.setCnaeFiscal(e.getCnaeFiscal());
+        res.setCodigoMunicipioIbge(e.getCodigoMunicipioIbge());
+        res.setCodigoUfIbge(e.getCodigoUfIbge());
+        res.setAmbienteNfe(e.getAmbienteNfe());
+        res.setSerieNfe(e.getSerieNfe());
+        res.setProximoNumeroNfe(e.getProximoNumeroNfe());
+        res.setSerieNfce(e.getSerieNfce());
+        res.setProximoNumeroNfce(e.getProximoNumeroNfce());
+        res.setCertificadoCaminho(e.getCertificadoCaminho());
+        res.setCertificadoValidade(e.getCertificadoValidade());
+        res.setCscId(e.getCscId());
+        res.setCscToken(e.getCscToken());
         return res;
     }
 }

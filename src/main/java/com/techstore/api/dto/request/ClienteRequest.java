@@ -43,6 +43,6 @@ public class ClienteRequest {
 
     private LocalDateTime dataCadastro;
 
-    @NotBlank(message = "Informe se o cliente está ativo")
+    @NotNull(message = "Informe se o cliente está ativo")
     private boolean ativo;
 }
