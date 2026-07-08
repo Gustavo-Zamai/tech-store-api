@@ -20,4 +20,15 @@ public class VendaResponse {
     private String observacao;
     private String status;
     private List<ItemVendaResponse> itens;
+
+    // ---------- Emissão fiscal (NFe/NFC-e) ----------
+    private Integer documentoFiscalTipo;
+    private String chaveAcesso;
+    private Integer numeroNotaFiscal;
+    private Integer serieNotaFiscal;
+    private String protocoloAutorizacao;
+    private String statusEmissaoFiscal;
+    private String motivoRejeicao;
+    private Integer indicadorPresenca;
+    private LocalDateTime dataAutorizacao;
 }

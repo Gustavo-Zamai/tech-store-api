@@ -19,4 +19,5 @@ public class ClienteResponse {
     private String estado;
     private LocalDateTime dataCadastro;
     private boolean ativo;
+    private Integer indicadorIe;
 }

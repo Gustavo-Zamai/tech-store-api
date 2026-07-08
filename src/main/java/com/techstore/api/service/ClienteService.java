@@ -78,6 +78,7 @@ public class ClienteService {
                 .estado(r.getEstado())
                 .dataCadastro(r.getDataCadastro())
                 .ativo(r.isAtivo())
+                .indicadorIe(r.getIndicadorIe())
                 .build();
     }
 
@@ -94,6 +95,7 @@ public class ClienteService {
         c.setEstado(r.getEstado());
         c.setDataCadastro(r.getDataCadastro());
         c.setAtivo(r.isAtivo());
+        c.setIndicadorIe(r.getIndicadorIe());
     }
 
     private ClienteResponse toResponse(Cliente c) {
@@ -111,6 +113,7 @@ public class ClienteService {
         res.setEstado(c.getEstado());
         res.setDataCadastro(c.getDataCadastro());
         res.setAtivo(c.isAtivo());
+        res.setIndicadorIe(c.getIndicadorIe());
         return res;
     }
 }

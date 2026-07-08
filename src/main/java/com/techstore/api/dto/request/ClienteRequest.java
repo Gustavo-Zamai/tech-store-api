@@ -43,6 +43,10 @@ public class ClienteRequest {
 
     private LocalDateTime dataCadastro;
 
-    @NotNull(message = "Informe se o cliente está ativo")
+    @NotBlank(message = "Informe se o cliente está ativo")
     private boolean ativo;
+
+    // Não é @NotNull de propósito: cliente pode ser cadastrado sem isso e
+    // ser preenchido depois, na hora de configurar a emissão de nota para ele.
+    private Integer indicadorIe;
 }

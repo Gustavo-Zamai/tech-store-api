@@ -48,4 +48,48 @@ public class Produto {
 
     @Column(nullable = false)
     private boolean ativo;
+
+    // ---------- Dados fiscais / NFe e NFC-e ----------
+
+    @Column(length = 8)
+    private String ncm;
+
+    @Column(length = 4)
+    private String cfop;
+
+    @Column(length = 7)
+    private String cest;
+
+    @Column(name = "unidade_comercial", length = 6)
+    private String unidadeComercial;
+
+    @Column(name = "unidade_tributavel", length = 6)
+    private String unidadeTributavel;
+
+    // Código de barras (GTIN/EAN). Usar "SEM GTIN" quando o produto não tiver.
+    @Column(name = "gtin_ean", length = 14)
+    private String gtinEan;
+
+    // Origem da mercadoria (tabela do SPED): 0-Nacional, 1 a 8-Estrangeira/outras
+    @Column(name = "origem_mercadoria")
+    private Integer origemMercadoria;
+
+    // CST (Regime Normal) ou CSOSN (Simples Nacional) do ICMS
+    @Column(name = "cst_csosn_icms", length = 4)
+    private String cstCsosnIcms;
+
+    @Column(name = "aliquota_icms", precision = 5, scale = 2)
+    private BigDecimal aliquotaIcms;
+
+    @Column(name = "cst_pis", length = 4)
+    private String cstPis;
+
+    @Column(name = "aliquota_pis", precision = 5, scale = 2)
+    private BigDecimal aliquotaPis;
+
+    @Column(name = "cst_cofins", length = 4)
+    private String cstCofins;
+
+    @Column(name = "aliquota_cofins", precision = 5, scale = 2)
+    private BigDecimal aliquotaCofins;
 }

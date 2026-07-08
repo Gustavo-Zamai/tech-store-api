@@ -40,4 +40,45 @@ public class ProdutoRequest {
 
     @NotNull
     private boolean ativo;
+
+    // ---------- Dados fiscais / NFe e NFC-e ----------
+    // Nenhum desses é @NotNull de propósito: produto pode ser cadastrado
+    // antes de todo o cadastro fiscal estar pronto, e passa a exigi-los só
+    // na hora de efetivamente emitir a nota (validação que fica pro módulo
+    // de emissão, não pro cadastro de produto).
+
+    @Size(max = 8)
+    private String ncm;
+
+    @Size(max = 4)
+    private String cfop;
+
+    @Size(max = 7)
+    private String cest;
+
+    @Size(max = 6)
+    private String unidadeComercial;
+
+    @Size(max = 6)
+    private String unidadeTributavel;
+
+    @Size(max = 14)
+    private String gtinEan;
+
+    private Integer origemMercadoria;
+
+    @Size(max = 4)
+    private String cstCsosnIcms;
+
+    private BigDecimal aliquotaIcms;
+
+    @Size(max = 4)
+    private String cstPis;
+
+    private BigDecimal aliquotaPis;
+
+    @Size(max = 4)
+    private String cstCofins;
+
+    private BigDecimal aliquotaCofins;
 }

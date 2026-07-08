@@ -120,9 +120,24 @@ public class VendaService {
         res.setDataVenda(v.getDataVenda());
         res.setMetodoPagamento(v.getMetodoPagamento());
         res.setTotal(v.getTotal());
+        res.setDesconto(v.getDesconto());
+        res.setSubtotal(v.getSubtotal());
+        res.setObservacao(v.getObservacao());
+        res.setStatus(v.getStatus());
         if (v.getItens() != null) {
             res.setItens(v.getItens().stream().map(this::toItemResponse).collect(Collectors.toList()));
         }
+
+        res.setDocumentoFiscalTipo(v.getDocumentoFiscalTipo());
+        res.setChaveAcesso(v.getChaveAcesso());
+        res.setNumeroNotaFiscal(v.getNumeroNotaFiscal());
+        res.setSerieNotaFiscal(v.getSerieNotaFiscal());
+        res.setProtocoloAutorizacao(v.getProtocoloAutorizacao());
+        res.setStatusEmissaoFiscal(v.getStatusEmissaoFiscal());
+        res.setMotivoRejeicao(v.getMotivoRejeicao());
+        res.setIndicadorPresenca(v.getIndicadorPresenca());
+        res.setDataAutorizacao(v.getDataAutorizacao());
+
         return res;
     }
 

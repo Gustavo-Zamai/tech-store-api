@@ -50,6 +50,46 @@ public class Venda {
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ItemVenda> itens;
 
+    // ---------- Emissão fiscal (NFe/NFC-e) ----------
+    // Preenchidos depois da criação da venda, pelo (futuro) módulo de
+    // emissão - não fazem parte do fluxo de criar()/atualizar() ainda,
+    // porque a Venda hoje não tem endpoint de PUT (venda fechada não se edita).
+
+    // Modelo do documento fiscal: 55-NFe, 65-NFC-e. Nulo enquanto não emitida.
+    @Column(name = "documento_fiscal_tipo")
+    private Integer documentoFiscalTipo;
+
+    @Column(name = "chave_acesso", length = 44)
+    private String chaveAcesso;
+
+    @Column(name = "numero_nota_fiscal")
+    private Integer numeroNotaFiscal;
+
+    @Column(name = "serie_nota_fiscal")
+    private Integer serieNotaFiscal;
+
+    @Column(name = "protocolo_autorizacao", length = 30)
+    private String protocoloAutorizacao;
+
+    // PENDENTE, AUTORIZADA, REJEITADA, CANCELADA, NAO_EMITIDA
+    @Column(name = "status_emissao_fiscal", length = 20)
+    @Builder.Default
+    private String statusEmissaoFiscal = "NAO_EMITIDA";
+
+    @Column(name = "motivo_rejeicao", length = 500)
+    private String motivoRejeicao;
+
+    // Indicador de presença do comprador (indPres): 0-Não se aplica,
+    // 1-Presencial, 2-Internet, 3-Teleatendimento, 4-Entrega a domicílio, 9-Outros
+    @Column(name = "indicador_presenca")
+    private Integer indicadorPresenca;
+
+    @Column(name = "data_autorizacao")
+    private LocalDateTime dataAutorizacao;
+
+    @Column(name = "caminho_xml", length = 500)
+    private String caminhoXml;
+
     @PrePersist
     public void prePersist() {
         if (dataVenda == null) dataVenda = LocalDateTime.now();

@@ -37,6 +37,19 @@ public class ProdutoService {
                 .dataCadastro(request.getDataCadastro())
                 .quantidadeMinima(request.getQuantidadeMinima())
                 .ativo(request.isAtivo())
+                .ncm(request.getNcm())
+                .cfop(request.getCfop())
+                .cest(request.getCest())
+                .unidadeComercial(request.getUnidadeComercial())
+                .unidadeTributavel(request.getUnidadeTributavel())
+                .gtinEan(request.getGtinEan())
+                .origemMercadoria(request.getOrigemMercadoria())
+                .cstCsosnIcms(request.getCstCsosnIcms())
+                .aliquotaIcms(request.getAliquotaIcms())
+                .cstPis(request.getCstPis())
+                .aliquotaPis(request.getAliquotaPis())
+                .cstCofins(request.getCstCofins())
+                .aliquotaCofins(request.getAliquotaCofins())
                 .build();
         return toResponse(repository.save(p));
     }
@@ -76,6 +89,19 @@ public class ProdutoService {
         p.setDataCadastro(request.getDataCadastro());
         p.setQuantidadeMinima(request.getQuantidadeMinima());
         p.setAtivo(request.isAtivo());
+        p.setNcm(request.getNcm());
+        p.setCfop(request.getCfop());
+        p.setCest(request.getCest());
+        p.setUnidadeComercial(request.getUnidadeComercial());
+        p.setUnidadeTributavel(request.getUnidadeTributavel());
+        p.setGtinEan(request.getGtinEan());
+        p.setOrigemMercadoria(request.getOrigemMercadoria());
+        p.setCstCsosnIcms(request.getCstCsosnIcms());
+        p.setAliquotaIcms(request.getAliquotaIcms());
+        p.setCstPis(request.getCstPis());
+        p.setAliquotaPis(request.getAliquotaPis());
+        p.setCstCofins(request.getCstCofins());
+        p.setAliquotaCofins(request.getAliquotaCofins());
         return toResponse(repository.save(p));
     }
 
@@ -105,6 +131,19 @@ public class ProdutoService {
         res.setQuantidadeMinima(p.getQuantidadeMinima());
         res.setDataCadastro(p.getDataCadastro());
         res.setAtivo(p.isAtivo());
+        res.setNcm(p.getNcm());
+        res.setCfop(p.getCfop());
+        res.setCest(p.getCest());
+        res.setUnidadeComercial(p.getUnidadeComercial());
+        res.setUnidadeTributavel(p.getUnidadeTributavel());
+        res.setGtinEan(p.getGtinEan());
+        res.setOrigemMercadoria(p.getOrigemMercadoria());
+        res.setCstCsosnIcms(p.getCstCsosnIcms());
+        res.setAliquotaIcms(p.getAliquotaIcms());
+        res.setCstPis(p.getCstPis());
+        res.setAliquotaPis(p.getAliquotaPis());
+        res.setCstCofins(p.getCstCofins());
+        res.setAliquotaCofins(p.getAliquotaCofins());
         return res;
     }
 }

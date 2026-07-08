@@ -51,4 +51,9 @@ public class Cliente {
 
     @Column(nullable = false)
     private boolean ativo;
+
+    // Indicador de IE do destinatário (indIEDest na NFe/NFC-e):
+    // 1-Contribuinte ICMS, 2-Contribuinte isento de Inscrição, 9-Não Contribuinte
+    @Column(name = "indicador_ie")
+    private Integer indicadorIe;
 }

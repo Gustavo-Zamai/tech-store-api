@@ -19,4 +19,19 @@ public class ProdutoResponse {
     private Integer quantidadeMinima;
     private LocalDateTime dataCadastro;
     private boolean ativo;
+
+    // ---------- Dados fiscais / NFe e NFC-e ----------
+    private String ncm;
+    private String cfop;
+    private String cest;
+    private String unidadeComercial;
+    private String unidadeTributavel;
+    private String gtinEan;
+    private Integer origemMercadoria;
+    private String cstCsosnIcms;
+    private BigDecimal aliquotaIcms;
+    private String cstPis;
+    private BigDecimal aliquotaPis;
+    private String cstCofins;
+    private BigDecimal aliquotaCofins;
 }
