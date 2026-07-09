@@ -81,4 +81,24 @@ public class ProdutoRequest {
     private String cstCofins;
 
     private BigDecimal aliquotaCofins;
+
+    // ---------- IBS / CBS / Imposto Seletivo ----------
+    @Size(max = 3)
+    private String cstIbsCbs;
+
+    @Size(max = 6)
+    private String cClassTrib;
+
+    @Size(max = 10)
+    private String cBenef;
+
+    private BigDecimal aliquotaIbsEstadual;
+
+    private BigDecimal aliquotaIbsMunicipal;
+
+    private BigDecimal aliquotaCbs;
+
+    private Boolean sujeitoImpostoSeletivo;
+
+    private BigDecimal aliquotaImpostoSeletivo;
 }

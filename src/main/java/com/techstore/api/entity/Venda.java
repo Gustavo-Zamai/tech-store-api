@@ -32,6 +32,12 @@ public class Venda {
     @Column(name = "metodo_pagamento", nullable = false, length = 80)
     private String metodoPagamento;
 
+    // Código oficial da forma de pagamento (tPag) exigido pela SEFAZ na
+    // NFe/NFC-e: 01-Dinheiro, 02-Cheque, 03-Cartão de Crédito, 04-Cartão de
+    // Débito, 05-Crédito Loja, 15-Boleto, 17-PIX, 99-Outros, etc.
+    @Column(name = "metodo_pagamento_codigo", length = 2)
+    private String metodoPagamentoCodigo;
+
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
 

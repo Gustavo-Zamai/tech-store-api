@@ -62,6 +62,7 @@ public class VendaService {
                 .funcionario(funcionario)
                 .dataVenda(LocalDateTime.now())
                 .metodoPagamento(request.getMetodoPagamento())
+                .metodoPagamentoCodigo(request.getMetodoPagamentoCodigo())
                 .subtotal(total) // ainda não há lógica de desconto implementada, então subtotal = total
                 .desconto(BigDecimal.ZERO)
                 .total(total)
@@ -119,6 +120,7 @@ public class VendaService {
         res.setNomeFuncionario(v.getFuncionario().getNomeCompleto());
         res.setDataVenda(v.getDataVenda());
         res.setMetodoPagamento(v.getMetodoPagamento());
+        res.setMetodoPagamentoCodigo(v.getMetodoPagamentoCodigo());
         res.setTotal(v.getTotal());
         res.setDesconto(v.getDesconto());
         res.setSubtotal(v.getSubtotal());

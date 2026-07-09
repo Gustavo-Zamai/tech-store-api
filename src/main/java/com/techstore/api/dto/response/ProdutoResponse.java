@@ -34,4 +34,14 @@ public class ProdutoResponse {
     private BigDecimal aliquotaPis;
     private String cstCofins;
     private BigDecimal aliquotaCofins;
+
+    // ---------- IBS / CBS / Imposto Seletivo ----------
+    private String cstIbsCbs;
+    private String cClassTrib;
+    private String cBenef;
+    private BigDecimal aliquotaIbsEstadual;
+    private BigDecimal aliquotaIbsMunicipal;
+    private BigDecimal aliquotaCbs;
+    private Boolean sujeitoImpostoSeletivo;
+    private BigDecimal aliquotaImpostoSeletivo;
 }

@@ -17,6 +17,12 @@ public class VendaRequest {
     @Size(max = 80)
     private String metodoPagamento;
 
+    // Código oficial SEFAZ (tPag). Não é @NotBlank de propósito: o desktop já
+    // manda calculado, mas deixamos opcional para não quebrar integrações
+    // futuras que ainda não enviem esse campo.
+    @Size(max = 2)
+    private String metodoPagamentoCodigo;
+
     @NotEmpty(message = "A venda deve ter ao menos um item")
     private List<ItemVendaRequest> itens;
 }

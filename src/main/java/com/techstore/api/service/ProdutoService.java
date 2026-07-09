@@ -50,6 +50,14 @@ public class ProdutoService {
                 .aliquotaPis(request.getAliquotaPis())
                 .cstCofins(request.getCstCofins())
                 .aliquotaCofins(request.getAliquotaCofins())
+                .cstIbsCbs(request.getCstIbsCbs())
+                .cClassTrib(request.getCClassTrib())
+                .cBenef(request.getCBenef())
+                .aliquotaIbsEstadual(request.getAliquotaIbsEstadual())
+                .aliquotaIbsMunicipal(request.getAliquotaIbsMunicipal())
+                .aliquotaCbs(request.getAliquotaCbs())
+                .sujeitoImpostoSeletivo(request.getSujeitoImpostoSeletivo())
+                .aliquotaImpostoSeletivo(request.getAliquotaImpostoSeletivo())
                 .build();
         return toResponse(repository.save(p));
     }
@@ -102,6 +110,14 @@ public class ProdutoService {
         p.setAliquotaPis(request.getAliquotaPis());
         p.setCstCofins(request.getCstCofins());
         p.setAliquotaCofins(request.getAliquotaCofins());
+        p.setCstIbsCbs(request.getCstIbsCbs());
+        p.setCClassTrib(request.getCClassTrib());
+        p.setCBenef(request.getCBenef());
+        p.setAliquotaIbsEstadual(request.getAliquotaIbsEstadual());
+        p.setAliquotaIbsMunicipal(request.getAliquotaIbsMunicipal());
+        p.setAliquotaCbs(request.getAliquotaCbs());
+        p.setSujeitoImpostoSeletivo(request.getSujeitoImpostoSeletivo());
+        p.setAliquotaImpostoSeletivo(request.getAliquotaImpostoSeletivo());
         return toResponse(repository.save(p));
     }
 
@@ -144,6 +160,14 @@ public class ProdutoService {
         res.setAliquotaPis(p.getAliquotaPis());
         res.setCstCofins(p.getCstCofins());
         res.setAliquotaCofins(p.getAliquotaCofins());
+        res.setCstIbsCbs(p.getCstIbsCbs());
+        res.setCClassTrib(p.getCClassTrib());
+        res.setCBenef(p.getCBenef());
+        res.setAliquotaIbsEstadual(p.getAliquotaIbsEstadual());
+        res.setAliquotaIbsMunicipal(p.getAliquotaIbsMunicipal());
+        res.setAliquotaCbs(p.getAliquotaCbs());
+        res.setSujeitoImpostoSeletivo(p.getSujeitoImpostoSeletivo());
+        res.setAliquotaImpostoSeletivo(p.getAliquotaImpostoSeletivo());
         return res;
     }
 }

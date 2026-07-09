@@ -14,6 +14,7 @@ public class VendaResponse {
     private String nomeFuncionario;
     private LocalDateTime dataVenda;
     private String metodoPagamento;
+    private String metodoPagamentoCodigo;
     private BigDecimal total;
     private BigDecimal desconto;
     private BigDecimal subtotal;
