@@ -2,9 +2,11 @@ package com.techstore.api.service;
 
 import com.techstore.api.dto.request.ProdutoRequest;
 import com.techstore.api.dto.response.ProdutoResponse;
-import com.techstore.api.entity.Categoria;
+import com.techstore.api.entity.Grupo;
 import com.techstore.api.entity.Fornecedor;
+import com.techstore.api.entity.Marca;
 import com.techstore.api.entity.Produto;
+import com.techstore.api.entity.UnidadeMedida;
 import com.techstore.api.exception.ResourceNotFoundException;
 import com.techstore.api.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +22,17 @@ public class ProdutoService {
 
     private final ProdutoRepository repository;
     private final FornecedorService fornecedorService;
-    private final CategoriaService categoriaService;
+    private final GrupoService grupoService;
+    private final MarcaService marcaService;
+    private final UnidadeMedidaService unidadeMedidaService;
 
     @Transactional
     public ProdutoResponse criar(ProdutoRequest request) {
         Fornecedor fornecedor = fornecedorService.buscarEntidade(request.getIdFornecedor());
-        Categoria categoria = categoriaService.buscarEntidade(request.getIdCategoria());
+        Grupo grupo = grupoService.buscarEntidade(request.getIdGrupo());
+        Marca marca = request.getIdMarca() != null ? marcaService.buscarEntidade(request.getIdMarca()) : null;
+        UnidadeMedida unidadeMedida = request.getIdUnidadeMedida() != null
+                ? unidadeMedidaService.buscarEntidade(request.getIdUnidadeMedida()) : null;
         Produto p = Produto.builder()
                 .nome(request.getNome())
                 .descricao(request.getDescricao())
@@ -33,7 +40,9 @@ public class ProdutoService {
                 .precoCompra(request.getPrecoCompra())
                 .quantidade(request.getQuantidade())
                 .fornecedor(fornecedor)
-                .categoria(categoria)
+                .grupo(grupo)
+                .marca(marca)
+                .unidadeMedida(unidadeMedida)
                 .dataCadastro(request.getDataCadastro())
                 .quantidadeMinima(request.getQuantidadeMinima())
                 .ativo(request.isAtivo())
@@ -50,14 +59,6 @@ public class ProdutoService {
                 .aliquotaPis(request.getAliquotaPis())
                 .cstCofins(request.getCstCofins())
                 .aliquotaCofins(request.getAliquotaCofins())
-                .cstIbsCbs(request.getCstIbsCbs())
-                .cClassTrib(request.getCClassTrib())
-                .cBenef(request.getCBenef())
-                .aliquotaIbsEstadual(request.getAliquotaIbsEstadual())
-                .aliquotaIbsMunicipal(request.getAliquotaIbsMunicipal())
-                .aliquotaCbs(request.getAliquotaCbs())
-                .sujeitoImpostoSeletivo(request.getSujeitoImpostoSeletivo())
-                .aliquotaImpostoSeletivo(request.getAliquotaImpostoSeletivo())
                 .build();
         return toResponse(repository.save(p));
     }
@@ -86,14 +87,19 @@ public class ProdutoService {
     public ProdutoResponse atualizar(Integer id, ProdutoRequest request) {
         Produto p = buscarEntidade(id);
         Fornecedor fornecedor = fornecedorService.buscarEntidade(request.getIdFornecedor());
-        Categoria categoria = categoriaService.buscarEntidade(request.getIdCategoria());
+        Grupo grupo = grupoService.buscarEntidade(request.getIdGrupo());
+        Marca marca = request.getIdMarca() != null ? marcaService.buscarEntidade(request.getIdMarca()) : null;
+        UnidadeMedida unidadeMedida = request.getIdUnidadeMedida() != null
+                ? unidadeMedidaService.buscarEntidade(request.getIdUnidadeMedida()) : null;
         p.setNome(request.getNome());
         p.setDescricao(request.getDescricao());
         p.setPrecoVenda(request.getPrecoVenda());
         p.setPrecoCompra(request.getPrecoCompra());
         p.setQuantidade(request.getQuantidade());
         p.setFornecedor(fornecedor);
-        p.setCategoria(categoria);
+        p.setGrupo(grupo);
+        p.setMarca(marca);
+        p.setUnidadeMedida(unidadeMedida);
         p.setDataCadastro(request.getDataCadastro());
         p.setQuantidadeMinima(request.getQuantidadeMinima());
         p.setAtivo(request.isAtivo());
@@ -110,14 +116,6 @@ public class ProdutoService {
         p.setAliquotaPis(request.getAliquotaPis());
         p.setCstCofins(request.getCstCofins());
         p.setAliquotaCofins(request.getAliquotaCofins());
-        p.setCstIbsCbs(request.getCstIbsCbs());
-        p.setCClassTrib(request.getCClassTrib());
-        p.setCBenef(request.getCBenef());
-        p.setAliquotaIbsEstadual(request.getAliquotaIbsEstadual());
-        p.setAliquotaIbsMunicipal(request.getAliquotaIbsMunicipal());
-        p.setAliquotaCbs(request.getAliquotaCbs());
-        p.setSujeitoImpostoSeletivo(request.getSujeitoImpostoSeletivo());
-        p.setAliquotaImpostoSeletivo(request.getAliquotaImpostoSeletivo());
         return toResponse(repository.save(p));
     }
 
@@ -142,8 +140,16 @@ public class ProdutoService {
         res.setQuantidade(p.getQuantidade());
         res.setIdFornecedor(p.getFornecedor().getId());
         res.setNomeFornecedor(p.getFornecedor().getNomeCompleto());
-        res.setIdCategoria(p.getCategoria().getId());
-        res.setDescricaoCategoria(p.getCategoria().getDescricao());
+        res.setIdGrupo(p.getGrupo().getId());
+        res.setDescricaoGrupo(p.getGrupo().getDescricao());
+        if (p.getMarca() != null) {
+            res.setIdMarca(p.getMarca().getId());
+            res.setNomeMarca(p.getMarca().getNome());
+        }
+        if (p.getUnidadeMedida() != null) {
+            res.setIdUnidadeMedida(p.getUnidadeMedida().getId());
+            res.setSiglaUnidadeMedida(p.getUnidadeMedida().getSigla());
+        }
         res.setQuantidadeMinima(p.getQuantidadeMinima());
         res.setDataCadastro(p.getDataCadastro());
         res.setAtivo(p.isAtivo());
@@ -160,14 +166,6 @@ public class ProdutoService {
         res.setAliquotaPis(p.getAliquotaPis());
         res.setCstCofins(p.getCstCofins());
         res.setAliquotaCofins(p.getAliquotaCofins());
-        res.setCstIbsCbs(p.getCstIbsCbs());
-        res.setCClassTrib(p.getCClassTrib());
-        res.setCBenef(p.getCBenef());
-        res.setAliquotaIbsEstadual(p.getAliquotaIbsEstadual());
-        res.setAliquotaIbsMunicipal(p.getAliquotaIbsMunicipal());
-        res.setAliquotaCbs(p.getAliquotaCbs());
-        res.setSujeitoImpostoSeletivo(p.getSujeitoImpostoSeletivo());
-        res.setAliquotaImpostoSeletivo(p.getAliquotaImpostoSeletivo());
         return res;
     }
 }

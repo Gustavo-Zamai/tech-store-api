@@ -37,13 +37,25 @@ public class Produto {
     private Fornecedor fornecedor;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoria", nullable = false)
-    private Categoria categoria;
+    @JoinColumn(name = "id_grupo", nullable = false)
+    private Grupo grupo;
+
+    // Opcionais de propósito: nem todo negócio categoriza por marca, e a
+    // unidade de medida "fiscal" já existe como texto livre nos campos
+    // unidadeComercial/unidadeTributavel (exigidos pela NFe). Esta aqui é
+    // mais pra catálogo/organização interna.
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_marca", nullable = true)
+    private Marca marca;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_unidade_medida", nullable = true)
+    private UnidadeMedida unidadeMedida;
 
     @Column(name = "quantidade_minima")
     private Integer quantidadeMinima;
 
-    @Column(name = "data_cadastro", nullable = false)
+    @Column(name = "data_cadastro", nullable = true, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dataCadastro;
 
     @Column(nullable = false)
@@ -92,38 +104,4 @@ public class Produto {
 
     @Column(name = "aliquota_cofins", precision = 5, scale = 2)
     private BigDecimal aliquotaCofins;
-
-    // ---------- IBS / CBS / Imposto Seletivo (Reforma Tributária - EC 132/2023, LC 214/2025) ----------
-    // Obrigatório declarar desde jan/2026 (alíquota-teste, sem custo extra real);
-    // validações plenas em produção a partir de 03/08/2026 para Regime Normal (CRT=3).
-
-    // CST específico do IBS/CBS (Grupo UB) - é diferente do CST de ICMS.
-    @Column(name = "cst_ibs_cbs", length = 3)
-    private String cstIbsCbs;
-
-    // Detalhamento do CST, vinculado a um artigo específico da LC 214/2025
-    // (ex: para CST 410, existem 27 cClassTrib diferentes).
-    @Column(name = "c_class_trib", length = 6)
-    private String cClassTrib;
-
-    // Código de Benefício Fiscal (já existia para ICMS, passa a valer também para IBS/CBS)
-    @Column(name = "c_benef", length = 10)
-    private String cBenef;
-
-    @Column(name = "aliquota_ibs_estadual", precision = 6, scale = 3)
-    private BigDecimal aliquotaIbsEstadual;
-
-    @Column(name = "aliquota_ibs_municipal", precision = 6, scale = 3)
-    private BigDecimal aliquotaIbsMunicipal;
-
-    @Column(name = "aliquota_cbs", precision = 6, scale = 3)
-    private BigDecimal aliquotaCbs;
-
-    // Produto sujeito ao Imposto Seletivo (cigarro, bebida alcoólica, veículo
-    // poluente, etc - "imposto do pecado"). A maioria dos produtos NÃO é.
-    @Column(name = "sujeito_imposto_seletivo")
-    private Boolean sujeitoImpostoSeletivo;
-
-    @Column(name = "aliquota_imposto_seletivo", precision = 6, scale = 3)
-    private BigDecimal aliquotaImpostoSeletivo;
 }

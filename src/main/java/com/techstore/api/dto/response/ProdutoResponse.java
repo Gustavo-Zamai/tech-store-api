@@ -14,8 +14,13 @@ public class ProdutoResponse {
     private Integer quantidade;
     private Integer idFornecedor;
     private String nomeFornecedor;
-    private Integer idCategoria;
-    private String descricaoCategoria;
+    private Integer idGrupo;
+    private String descricaoGrupo;
+
+    private Integer idMarca;
+    private String nomeMarca;
+    private Integer idUnidadeMedida;
+    private String siglaUnidadeMedida;
     private Integer quantidadeMinima;
     private LocalDateTime dataCadastro;
     private boolean ativo;
@@ -34,14 +39,4 @@ public class ProdutoResponse {
     private BigDecimal aliquotaPis;
     private String cstCofins;
     private BigDecimal aliquotaCofins;
-
-    // ---------- IBS / CBS / Imposto Seletivo ----------
-    private String cstIbsCbs;
-    private String cClassTrib;
-    private String cBenef;
-    private BigDecimal aliquotaIbsEstadual;
-    private BigDecimal aliquotaIbsMunicipal;
-    private BigDecimal aliquotaCbs;
-    private Boolean sujeitoImpostoSeletivo;
-    private BigDecimal aliquotaImpostoSeletivo;
 }

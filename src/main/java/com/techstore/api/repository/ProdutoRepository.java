@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
-    List<Produto> findByCategoriaId(Integer idCategoria);
+    List<Produto> findByGrupoId(Integer idGrupo);
     List<Produto> findByFornecedorId(Integer idFornecedor);
     List<Produto> findByNomeContainingIgnoreCase(String nome);
     List<Produto> findByQuantidadeLessThan(Integer quantidade);
